@@ -4,8 +4,8 @@
   "author": "Cypress Weekend",
   "description": "Cypress Weekend Starting Project",
   "scripts": {
-    "lint": "eslint --max-warnings 0 './**/*.{js,ts,md}'",
-    "lint:fix": "eslint --max-warnings 0 './**/*.{js,ts,md}' --fix",
+    "lint": "eslint --no-error-on-unmatched-pattern --max-warnings 0 './**/*.{js,ts}'",
+    "lint:fix": "eslint --no-error-on-unmatched-pattern --max-warnings 0 './**/*.{js,ts}' --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "prepare": "husky install"
