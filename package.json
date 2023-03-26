@@ -1,0 +1,24 @@
+{
+  "name": "cypress-weekend-04-2023",
+  "version": "1.0.0",
+  "author": "Cypress Weekend",
+  "description": "Cypress Weekend Starting Project",
+  "scripts": {
+    "lint": "eslint --max-warnings 0 './**/*.{js,ts,md}'",
+    "lint:fix": "eslint --max-warnings 0 './**/*.{js,ts,md}' --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^9.0.0",
+    "cypress": "12.8.1",
+    "eslint": "8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "prettier": "2.8.7"
+  }
+}
