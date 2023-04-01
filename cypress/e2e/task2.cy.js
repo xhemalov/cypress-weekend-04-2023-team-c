@@ -1,5 +1,15 @@
 describe('task2', () => {
   /**
+   * Set up the test environment before each test case.
+   */
+  beforeEach(() => {
+    cy.log('visiting baseUrl')
+    cy.visit('mx/cheap-flights/london-united-kingdom/istanbul-turkey')
+    cy.log('Agreeing to a cookie.')
+    cy.setCookie('__kwc_agreed', 'true')
+  })
+
+  /**
    * This suite tests URL redirects and language validation for a travel website.
    */
   it('should redirect from unsupported language', () => {
