@@ -123,4 +123,12 @@ it('Test sections', () => {
       cy.contains('Oceania')
         .should('be.visible')
     })
+
+    cy.log('Search flights, trains & buses')
+    cy.get('[data-test="ExploreWrapper"]:contains(Search flights, trains & buses)')
+      .should('be.visible')
+
+    cy.log('Footer')
+    cy.get('[data-test="Footer-LinksColumn"]')
+      .should('be.visible')
 })
