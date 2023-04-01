@@ -36,8 +36,6 @@ describe('Test China country botview page', () => {
   })
 
   it('Should verify head', () => {
-    cy.log('1. Visit page')
-
     cy.log('2. Assert title text')
     cy.get('head title').should('have.text', texts.headTitle)
 
