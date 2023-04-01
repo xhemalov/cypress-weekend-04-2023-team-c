@@ -44,6 +44,10 @@ Cypress.Commands.add('collectLanguages', () => {
   cy.writeFile('cypress/fixtures/hreflangs.json', hreflangs)
 })
 
+/**
+ * Custom Cypress command to collect the languages supported by the application.
+ * NOTE: Modified approach was used, hreflang is the key, lang is the value to avoid duplicated keys
+ */
 Cypress.Commands.add('BONUScollectLanguages', () => {
   // Initialize an array to store the values of 'hreflang' attributes
   const hreflangs = {}
