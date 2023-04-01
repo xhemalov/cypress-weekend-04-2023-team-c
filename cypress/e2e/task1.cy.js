@@ -1,4 +1,5 @@
 const texts = {
+  headTitle: "Cheap flights to China | Kiwi.com",
   description:
     'Find the cheapest flights to China. Compare different airlines, choose the best price, and book your cheap plane ticket to China.',
   h1: 'Plane tickets to China',
@@ -18,7 +19,7 @@ describe('Test China country botview page', () => {
     cy.visit('/en/country/china/?botview=1')
 
     cy.log('2. Assert title text')
-    cy.get('head title').should('have.text', 'Cheap flights to China | Kiwi.com')
+    cy.get('head title').should('have.text', texts.headTitle)
 
     cy.log('3. Assert meta description')
     cy.get('[name="description"]')
@@ -70,65 +71,68 @@ describe('Test China country botview page', () => {
     cy.get('@sectionAirport').contains(texts.airportNear).should('be.visible')
     cy.get('@sectionAirport').contains(texts.popularAirportIn).should('be.visible')
   })
-})
 
-it('Test sections', () => {
-  cy.log('Buses & trains')
-  cy.get('[data-test="InterlinkingSection"]:contains(Buses & trains)')
-    .should('be.visible')
-
-  cy.log('Cheapest month to fly to China')
-  cy.contains('Cheapest month to fly to China')
-    .should('be.visible')
-
-  cy.log('Discover China')
-  cy.contains('Discover China')
-    .should('be.visible')
-
-  cy.log('China COVID-19 travel restrictions')
-  cy.contains('China COVID-19 travel restrictions')
-    .should('be.visible')
-
-  cy.log('Departure, Return')
-  cy.contains('Departure')
-    .should('be.visible')
-  cy.contains('Return')
-    .should('be.visible')
-
-  cy.log('Popular flights + subsections')
-  cy.get('[data-test="InterlinkingSection"]:contains(Popular flights)')
-    .eq(0)
-    .should('be.visible')
-    .within(() => {
-      cy.contains('Explore alternative flights to China')
-        .should('be.visible')
-      cy.contains('Find popular flights from China')
-        .should('be.visible')
-    })
+  it('Verify body - part 2', () => {
+    cy.log('1. Visit page')
+    cy.visit('/en/country/china/?botview=1')
   
-  cy.log('Cheap flights + subsections')
-  cy.get('[data-test="InterlinkingSection"]:contains(Cheap flights)')
-    .should('be.visible')
-    .within(() => {
-      cy.contains('Europe')
-        .should('be.visible')
-      cy.contains('Asia')
-        .should('be.visible')
-      cy.contains('Africa')
-        .should('be.visible')
-      cy.contains('North America')
-        .should('be.visible')
-      cy.contains('South America')
-        .should('be.visible')
-      cy.contains('Oceania')
-        .should('be.visible')
-    })
-
-    cy.log('Search flights, trains & buses')
-    cy.get('[data-test="ExploreWrapper"]:contains(Search flights, trains & buses)')
+    cy.log('Buses & trains')
+    cy.get('[data-test="InterlinkingSection"]:contains(Buses & trains)')
       .should('be.visible')
-
-    cy.log('Footer')
-    cy.get('[data-test="Footer-LinksColumn"]')
+  
+    cy.log('Cheapest month to fly to China')
+    cy.contains('Cheapest month to fly to China')
       .should('be.visible')
+  
+    cy.log('Discover China')
+    cy.contains('Discover China')
+      .should('be.visible')
+  
+    cy.log('China COVID-19 travel restrictions')
+    cy.contains('China COVID-19 travel restrictions')
+      .should('be.visible')
+  
+    cy.log('Departure, Return')
+    cy.contains('Departure')
+      .should('be.visible')
+    cy.contains('Return')
+      .should('be.visible')
+  
+    cy.log('Popular flights + subsections')
+    cy.get('[data-test="InterlinkingSection"]:contains(Popular flights)')
+      .eq(0)
+      .should('be.visible')
+      .within(() => {
+        cy.contains('Explore alternative flights to China')
+          .should('be.visible')
+        cy.contains('Find popular flights from China')
+          .should('be.visible')
+      })
+    
+    cy.log('Cheap flights + subsections')
+    cy.get('[data-test="InterlinkingSection"]:contains(Cheap flights)')
+      .should('be.visible')
+      .within(() => {
+        cy.contains('Europe')
+          .should('be.visible')
+        cy.contains('Asia')
+          .should('be.visible')
+        cy.contains('Africa')
+          .should('be.visible')
+        cy.contains('North America')
+          .should('be.visible')
+        cy.contains('South America')
+          .should('be.visible')
+        cy.contains('Oceania')
+          .should('be.visible')
+      })
+  
+      cy.log('Search flights, trains & buses')
+      cy.get('[data-test="ExploreWrapper"]:contains(Search flights, trains & buses)')
+        .should('be.visible')
+  
+      cy.log('Footer')
+      cy.get('[data-test="Footer-LinksColumn"]')
+        .should('be.visible')
+  })
 })
