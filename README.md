@@ -73,4 +73,4 @@ repozitára ako `Collaborators`. Zvyšok tímu si projekt naklonuje pomocou `git
 
 ## Odovzdanie riešenia
 
-Keď budete pripravení odovzdať svoje riešenie, pozvite `CypressWeekend` medzi `Collaborators`.
+## Keď budete pripravení odovzdať svoje riešenie, pozvite `CypressWeekend` medzi `Collaborators`.
