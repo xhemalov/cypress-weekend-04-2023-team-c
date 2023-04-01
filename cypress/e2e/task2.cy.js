@@ -26,7 +26,6 @@ describe('task2', () => {
    * This test case validates the supported languages in the app.
    */
   it('languageValidation', () => {
-    // TODO move to before?
     cy.log('visiting baseUrl')
     cy.visit('mx/cheap-flights/london-united-kingdom/istanbul-turkey')
     cy.log('Agreeing to a cookie.')
