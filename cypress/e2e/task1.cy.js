@@ -141,7 +141,7 @@ describe('Test China country botview page', () => {
       })
   })
 
-  it('Should flights contain libra', () => {
+  it('Should flights contain libra BONUS', () => {
     cy.getByTestId('InterlinkingSection')
       .contains(texts.cheap)
       .should('be.visible')
