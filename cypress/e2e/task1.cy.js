@@ -12,9 +12,16 @@ const texts = {
 }
 
 describe('Test China country botview page', () => {
+  /**
+   * Set up the test environment before each test case.
+   */
+  beforeEach(() => {
+    cy.log('visiting baseUrl')
+    cy.visit('/en/country/china/?botview=1')
+  })
+
   it('Test <head>', () => {
     cy.log('1. Visit page')
-    cy.visit('/en/country/china/?botview=1')
 
     cy.log('2. Assert title text')
     cy.get('head title').should('have.text', 'Cheap flights to China | Kiwi.com')
@@ -32,7 +39,6 @@ describe('Test China country botview page', () => {
 
   it('Verify body - part 1', () => {
     cy.log('1. Visit page')
-    cy.visit('/en/country/china/?botview=1')
 
     cy.log('2. Verify h1 title')
     cy.get('h1').contains(texts.h1).and('be.visible')
@@ -68,5 +74,28 @@ describe('Test China country botview page', () => {
     cy.contains(texts.airportIn).should('be.visible').siblings().as('sectionAirport')
     cy.get('@sectionAirport').contains(texts.airportNear).should('be.visible')
     cy.get('@sectionAirport').contains(texts.popularAirportIn).should('be.visible')
+  })
+
+  /**
+   * Test to verify the 'Airlines based in China' list items
+   * - Each item should have a valid link containing '/en/airline/'
+   * - Each link should respond with a 200 status
+   */
+  it('should have working links', () => {
+    cy.contains('Airlines based in China')
+      .next()
+      .find('li a')
+      .then(airlineLinks => {
+        cy.wrap(airlineLinks).each(airlineLink => {
+          cy.wrap(airlineLink)
+            .invoke('attr', 'href')
+            .then(href => {
+              cy.request(href).then(response => {
+                expect(response.status).to.eq(200)
+                expect(href).to.contain('/en/airline/')
+              })
+            })
+        })
+      })
   })
 })
