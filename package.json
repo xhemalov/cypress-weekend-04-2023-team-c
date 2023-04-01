@@ -8,7 +8,8 @@
     "lint:fix": "eslint --no-error-on-unmatched-pattern --max-warnings 0 './**/*.{js,ts}' --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "npx cypress open --browser chrome --e2e"
   },
   "devDependencies": {
     "@testing-library/cypress": "^9.0.0",
@@ -20,5 +21,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "prettier": "2.8.7"
+  },
+  "dependencies": {
+    "cypress-plugin-xhr-toggle": "^1.0.0"
   }
 }
