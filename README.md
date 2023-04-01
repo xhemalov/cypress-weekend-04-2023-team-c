@@ -3,7 +3,7 @@
 Pripravili sme pre vás tento štartovací projekt, aby sme pre každý tím nastavili určitý štandard
 pri odovzdaní svojho riešenia. V projekte sú nainštalované balíčky [Eslint](https://eslint.org/)
 a [Prettier](https://prettier.io/) spolu s config súbormi.
-Ak si myslíte, že potrebujete nejaké ďalšie pravidlá, pokojne ich pridajte. 
+Ak si myslíte, že potrebujete nejaké ďalšie pravidlá, pokojne ich pridajte.
 Ďalej sme pridali [pre-commit hook](https://typicode.github.io/husky/#/),
 ktorý pri commitovaní spustí skripty pre spomenutý Eslint a Prettier.
 
@@ -73,4 +73,4 @@ repozitára ako `Collaborators`. Zvyšok tímu si projekt naklonuje pomocou `git
 
 ## Odovzdanie riešenia
 
-Keď budete pripravení odovzdať svoje riešenie, pozvite `CypressWeekend` medzi `Collaborators`.
+## Keď budete pripravení odovzdať svoje riešenie, pozvite `CypressWeekend` medzi `Collaborators`.
