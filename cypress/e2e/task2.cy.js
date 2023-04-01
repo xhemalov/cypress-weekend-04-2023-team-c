@@ -18,20 +18,15 @@ describe('task2', () => {
 
     cy.log('Visiting URL.')
     cy.visit('mx/cheap-flights/london-united-kingdom/istanbul-turkey')
-    cy.log('Verifying that URL was redirected.')
+    cy.log('Verifying that URL was redirected and Spanish phrase is present.')
     cy.url().should('contain', 'es/cheap-flights/london-united-kingdom/istanbul-turkey')
+    cy.get('.capitalize').should('contain.text', 'Hacks de viaje')
   })
 
   /**
    * This test case validates the supported languages in the app.
    */
   it('languageValidation', () => {
-    cy.log('visiting baseUrl')
-    cy.visit('mx/cheap-flights/london-united-kingdom/istanbul-turkey')
-    cy.log('Agreeing to a cookie.')
-    cy.setCookie('__kwc_agreed', 'true')
-    cy.reload()
-
     cy.log('Reading supported languages from fixture file.')
     cy.readFile('cypress/fixtures/hreflangs.json').then(hreflangs => {
       cy.log('Checking languages available in the app.')

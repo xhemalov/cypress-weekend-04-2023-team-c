@@ -19,3 +19,14 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+/**
+ * Set up the test environment before each test case.
+ */
+beforeEach(() => {
+  cy.log('visiting baseUrl')
+  cy.visit('mx/cheap-flights/london-united-kingdom/istanbul-turkey')
+  cy.log('Agreeing to a cookie.')
+  cy.setCookie('__kwc_agreed', 'true')
+  cy.reload()
+})
