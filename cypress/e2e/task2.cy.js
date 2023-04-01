@@ -26,8 +26,6 @@ describe('task2', () => {
       )
     })
 
-    cy.log('Visiting URL.')
-    cy.visit('mx/cheap-flights/london-united-kingdom/istanbul-turkey')
     cy.log('Verifying that URL was redirected and Spanish phrase is present.')
     cy.url().should('contain', 'es/cheap-flights/london-united-kingdom/istanbul-turkey')
     cy.get('.capitalize').should('contain.text', 'Hacks de viaje')
