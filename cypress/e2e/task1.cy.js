@@ -21,7 +21,7 @@ const countries = ['Europe', 'Asia', 'Africa', 'North America', 'South America',
 
 describe('Test China country botview page', () => {
 
-  it('Test <head>', () => {
+  it('Should verify head', () => {
     cy.log('1. Visit page')
     cy.visit('/en/country/china/?botview=1')
 
@@ -39,7 +39,7 @@ describe('Test China country botview page', () => {
       .should('include', 'https://www.kiwi.com/en/country/china/')
   })
 
-  it('Verify body - part 1', () => {
+  it('Should verify body', () => {
     cy.log('1. Visit page')
     cy.visit('/en/country/china/?botview=1')
 
@@ -77,11 +77,6 @@ describe('Test China country botview page', () => {
     cy.contains(texts.airportIn).should('be.visible').siblings().as('sectionAirport')
     cy.get('@sectionAirport').contains(texts.airportNear).should('be.visible')
     cy.get('@sectionAirport').contains(texts.popularAirportIn).should('be.visible')
-  })
-
-  it('Verify body - part 2', () => {
-    cy.log('1. Visit page')
-    cy.visit('/en/country/china/?botview=1')
 
     texts.sections.forEach(section => {
       cy.contains(section)
