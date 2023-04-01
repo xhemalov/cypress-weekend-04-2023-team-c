@@ -4,8 +4,7 @@ describe('Test China country botview page', () => {
     cy.visit('/en/country/china/?botview=1')
     
     cy.log('1. Assert title text')
-    cy.get('head')
-      .find('title')
+    cy.get('head title')
       .should('have.text', 'Cheap flights to China | Kiwi.com')
 
     cy.log('2. Assert meta description')
