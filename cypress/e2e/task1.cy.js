@@ -1,4 +1,6 @@
-const text = {
+const texts = {
+  description:
+    'Find the cheapest flights to China. Compare different airlines, choose the best price, and book your cheap plane ticket to China.',
   h1: 'Plane tickets to China',
   popularCities: 'Popular cities in China',
   airlinesIn: 'Airlines based in China',
@@ -20,10 +22,7 @@ describe('Test China country botview page', () => {
     cy.log('3. Assert meta description')
     cy.get('[name="description"]')
       .should('have.attr', 'content')
-      .should(
-        'include',
-        'Find the cheapest flights to China. Compare different airlines, choose the best price, and book your cheap plane ticket to China.',
-      )
+      .should('include', texts.description)
 
     cy.log('4. Assert canonical')
     cy.get('[rel="canonical"]')
@@ -36,7 +35,7 @@ describe('Test China country botview page', () => {
     cy.visit('/en/country/china/?botview=1')
 
     cy.log('2. Verify h1 title')
-    cy.get('h1').contains(text.h1).and('be.visible')
+    cy.get('h1').contains(texts.h1).and('be.visible')
 
     cy.log('3. Verify navbar is visible')
     cy.getByTestId('NavBar').should('be.visible')
@@ -58,16 +57,16 @@ describe('Test China country botview page', () => {
     cy.findByRole('navigation', { name: /Breadcrumb/i }).should('be.visible')
 
     cy.log('8. Verify section popular cities')
-    cy.contains(text.popularCities).should('be.visible')
+    cy.contains(texts.popularCities).should('be.visible')
 
     cy.log('9. Verify section explore airlines and airports')
-    cy.contains(text.explore).should('be.visible').siblings().as('sectionFlight')
-    cy.get('@sectionFlight').contains(text.airlinesIn).should('be.visible')
-    cy.get('@sectionFlight').contains(text.airlinesTo).should('be.visible')
+    cy.contains(texts.explore).should('be.visible').siblings().as('sectionFlight')
+    cy.get('@sectionFlight').contains(texts.airlinesIn).should('be.visible')
+    cy.get('@sectionFlight').contains(texts.airlinesTo).should('be.visible')
 
     cy.log('10. Verify section airports in China')
-    cy.contains(text.airportIn).should('be.visible').siblings().as('sectionAirport')
-    cy.get('@sectionAirport').contains(text.airportNear).should('be.visible')
-    cy.get('@sectionAirport').contains(text.popularAirportIn).should('be.visible')
+    cy.contains(texts.airportIn).should('be.visible').siblings().as('sectionAirport')
+    cy.get('@sectionAirport').contains(texts.airportNear).should('be.visible')
+    cy.get('@sectionAirport').contains(texts.popularAirportIn).should('be.visible')
   })
 })
