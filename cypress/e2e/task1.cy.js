@@ -51,8 +51,6 @@ describe('Test China country botview page', () => {
   })
 
   it('Should verify body', () => {
-    cy.log('1. Visit page')
-
     cy.log('2. Verify h1 title')
     cy.get('h1').contains(texts.h1).and('be.visible')
 
@@ -140,6 +138,17 @@ describe('Test China country botview page', () => {
               })
             })
         })
+      })
+  })
+
+  it('Should flights contain libra', () => {
+    cy.getByTestId('InterlinkingSection')
+      .contains(texts.cheap)
+      .should('be.visible')
+      .next()
+      .find('a')
+      .then(flightLinks => {
+        cy.wrap(flightLinks).each(flightLink => cy.wrap(flightLink).contains('£'))
       })
   })
 })
