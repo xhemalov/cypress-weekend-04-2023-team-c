@@ -9,7 +9,7 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "prepare": "husky install",
-    "test": "cnpx cypress open --browser chrome --e2e"
+    "test": "npx cypress open --browser chrome --e2e"
   },
   "devDependencies": {
     "@testing-library/cypress": "^9.0.0",
@@ -19,7 +19,6 @@
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
     "prettier": "2.8.7"
   },
   "dependencies": {
