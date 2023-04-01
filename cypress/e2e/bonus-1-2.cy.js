@@ -1,3 +1,5 @@
+const sectionText = 'Explore airlines and airports'
+
 describe('Bonus task', function() {
 
   before('Handle cookies + visit page', function() {
@@ -6,12 +8,12 @@ describe('Bonus task', function() {
   })
 
   it('Should verify randomly clicked airline link', function() {
-    cy.get('[data-test="InterlinkingSection"]:contains(Explore airlines and airports)')
+    cy.get('[data-test="InterlinkingSection"]:contains(' + sectionText + ')')
       .find('a')
       .its('length')
       .then((l) => Cypress._.random(0, l - 1))
       .then((p) => {
-        cy.get('[data-test="InterlinkingSection"]:contains(Explore airlines and airports)')
+        cy.get('[data-test="InterlinkingSection"]:contains(' + sectionText + ')')
           .find('a')
           .eq(p)
           .click()
