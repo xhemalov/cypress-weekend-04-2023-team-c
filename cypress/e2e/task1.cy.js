@@ -49,7 +49,7 @@ describe('Test China country botview page', () => {
     cy.log('3. Verify navbar is visible')
     cy.getByTestId('NavBar').should('be.visible')
 
-    cy.log('4. Verify search form')
+    cy.log('4. Verify search form + test JS is not active')
     cy.get('#sticky-search-form')
       .should('be.visible')
       .find('[type=pageLoader]')
