@@ -38,7 +38,7 @@ describe('task2', () => {
    */
   it('should support given languages', () => {
     cy.log('Reading supported languages from fixture file.')
-    cy.readFile('cypress/fixtures/hreflangs.json').then(hreflangs => {
+    cy.fixture('hreflangs.json').then(hreflangs => {
       cy.log('Checking languages available in the app.')
       cy.get('link[hreflang]').each(($element, index) => {
         cy.wrap($element).should('have.attr', 'hreflang', hreflangs[index])
