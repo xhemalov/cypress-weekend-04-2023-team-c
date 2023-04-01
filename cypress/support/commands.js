@@ -43,3 +43,7 @@ Cypress.Commands.add('collectLanguages', () => {
   // Write the 'hreflangs' array to a JSON file in the cypress/fixtures directory
   cy.writeFile('cypress/fixtures/hreflangs.json', hreflangs)
 })
+
+Cypress.Commands.add('getByTestId', (selector, ...args) => {
+  return cy.get(`[data-test=${selector}]`, ...args)
+})
