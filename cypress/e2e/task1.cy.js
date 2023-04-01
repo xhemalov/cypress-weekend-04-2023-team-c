@@ -10,11 +10,18 @@ const texts = {
   airportIn: 'Airports in China',
   popularAirportIn: 'Popular airports in China',
   explore: 'Explore airlines and airports',
-  sections:['Buses & trains', 'Cheapest month to fly to China', 'Discover China', 'China COVID-19 travel restrictions', 'Departure', 'Return'],
+  sections: [
+    'Buses & trains',
+    'Cheapest month to fly to China',
+    'Discover China',
+    'China COVID-19 travel restrictions',
+    'Departure',
+    'Return',
+  ],
   bestConnection: 'Search flights, trains & buses',
   cheap: 'Cheap flights',
   alternative: 'Explore alternative flights to China',
-  popular: 'Find popular flights from China'
+  popular: 'Find popular flights from China',
 }
 
 const countries = ['Europe', 'Asia', 'Africa', 'North America', 'South America', 'Oceania']
@@ -84,8 +91,7 @@ describe('Test China country botview page', () => {
     cy.get('@sectionAirport').contains(texts.popularAirportIn).should('be.visible')
 
     texts.sections.forEach(section => {
-      cy.contains(section)
-        .should('be.visible')
+      cy.contains(section).should('be.visible')
     })
 
     cy.log('Popular flights + subsections')
@@ -94,10 +100,8 @@ describe('Test China country botview page', () => {
       .should('be.visible')
       .next()
       .within(() => {
-        cy.contains(texts.alternative)
-          .should('be.visible')
-        cy.contains(texts.popular)
-          .should('be.visible')
+        cy.contains(texts.alternative).should('be.visible')
+        cy.contains(texts.popular).should('be.visible')
       })
 
     cy.log('Cheap flights + subsections')
@@ -107,20 +111,15 @@ describe('Test China country botview page', () => {
       .next()
       .within(() => {
         countries.forEach(country => {
-          cy.contains(country)
-            .should('be.visible')
+          cy.contains(country).should('be.visible')
         })
       })
 
     cy.log('Search flights, trains & buses')
-    cy.getByTestId('ExploreWrapper')
-      .contains(texts.bestConnection)
-      .should('be.visible')
+    cy.getByTestId('ExploreWrapper').contains(texts.bestConnection).should('be.visible')
 
     cy.log('Footer')
-    cy.getByTestId('Footer-LinksColumn')
-      .should('be.visible')
-  })
+    cy.getByTestId('Footer-LinksColumn').should('be.visible')
   })
 
   /**
@@ -128,7 +127,7 @@ describe('Test China country botview page', () => {
    * - Each item should have a valid link containing '/en/airline/'
    * - Each link should respond with a 200 status
    */
-  it('should have working links', () => {
+  it('Should have working links', () => {
     cy.contains('Airlines based in China')
       .next()
       .find('li a')
@@ -146,5 +145,3 @@ describe('Test China country botview page', () => {
       })
   })
 })
-
-
