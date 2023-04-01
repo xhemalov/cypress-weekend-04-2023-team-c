@@ -8,12 +8,12 @@ describe('Bonus task', function() {
   })
 
   it('Should verify randomly clicked airline link', function() {
-    cy.get('[data-test="InterlinkingSection"]:contains(' + sectionText + ')')
+    cy.get(`[data-test="InterlinkingSection"]:contains(${sectionText})`)
       .find('a')
       .its('length')
       .then((length) => Cypress._.random(0, length - 1))
       .then((randomIndex) => {
-        cy.get('[data-test="InterlinkingSection"]:contains(' + sectionText + ')')
+        cy.get(`[data-test="InterlinkingSection"]:contains(${sectionText})`)
           .find('a')
           .eq(randomIndex)
           .click()
