@@ -4,11 +4,6 @@
   "author": "Cypress Weekend",
   "description": "Cypress Weekend Starting Project",
   "scripts": {
-    "lint": "eslint --no-error-on-unmatched-pattern --max-warnings 0 './**/*.{js,ts}'",
-    "lint:fix": "eslint --no-error-on-unmatched-pattern --max-warnings 0 './**/*.{js,ts}' --fix",
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write .",
-    "prepare": "husky install",
     "test": "npx cypress open --browser chrome --e2e"
   },
   "devDependencies": {
