@@ -2,7 +2,7 @@ describe('task2', () => {
   /**
    * This suite tests URL redirects and language validation for a travel website.
    */
-  it('redirect from unsupported language', () => {
+  it('should redirect from unsupported language', () => {
     cy.log('Sending request to tested page.')
     cy.request({
       url: 'mx/cheap-flights/london-united-kingdom/istanbul-turkey',
@@ -26,7 +26,7 @@ describe('task2', () => {
   /**
    * This test case validates the supported languages in the app.
    */
-  it('languageValidation', () => {
+  it('should support given languages', () => {
     cy.log('Reading supported languages from fixture file.')
     cy.readFile('cypress/fixtures/hreflangs.json').then(hreflangs => {
       cy.log('Checking languages available in the app.')
