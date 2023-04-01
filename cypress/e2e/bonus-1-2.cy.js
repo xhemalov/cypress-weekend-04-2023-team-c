@@ -11,11 +11,11 @@ describe('Bonus task', function() {
     cy.get('[data-test="InterlinkingSection"]:contains(' + sectionText + ')')
       .find('a')
       .its('length')
-      .then((l) => Cypress._.random(0, l - 1))
-      .then((p) => {
+      .then((length) => Cypress._.random(0, length - 1))
+      .then((randomIndex) => {
         cy.get('[data-test="InterlinkingSection"]:contains(' + sectionText + ')')
           .find('a')
-          .eq(p)
+          .eq(randomIndex)
           .click()
           .invoke('attr', 'href')
           .then(href => {
