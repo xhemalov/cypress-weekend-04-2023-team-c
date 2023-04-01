@@ -43,4 +43,29 @@ describe('task2', () => {
       })
     })
   })
+
+  /**
+   * This bonus test case validates the supported languages in the app.
+   */
+  it('Should support given languages BONUS', () => {
+    cy.log('Reading supported languages from bonus fixture file.')
+    cy.fixture('hreflangs_bonus.json').then(hreflangs => {
+      // Convert the hreflangs object into an array of key-value pairs
+      const hreflangsArray = Object.entries(hreflangs)
+
+      // Iterate through the key-value pairs
+      hreflangsArray.forEach(([key, value], index) => {
+        // Get the link element by its index
+        cy.get('link[hreflang]')
+          .eq(index)
+          .then($element => {
+            // Assert that the element has the correct hreflang attribute (key)
+            cy.wrap($element).should('have.attr', 'hreflang', key)
+
+            // Assert that the element has the correct href attribute (value)
+            cy.wrap($element).should('have.attr', 'href', value)
+          })
+      })
+    })
+  })
 })
