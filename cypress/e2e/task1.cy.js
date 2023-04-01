@@ -10,21 +10,32 @@ const texts = {
   airportIn: 'Airports in China',
   popularAirportIn: 'Popular airports in China',
   explore: 'Explore airlines and airports',
-  sections:['Buses & trains', 'Cheapest month to fly to China', 'Discover China', 'China COVID-19 travel restrictions', 'Departure', 'Return'],
+  sections: [
+    'Buses & trains',
+    'Cheapest month to fly to China',
+    'Discover China',
+    'China COVID-19 travel restrictions',
+    'Departure',
+    'Return',
+  ],
   bestConnection: 'Search flights, trains & buses',
   cheap: 'Cheap flights',
   alternative: 'Explore alternative flights to China',
-  popular: 'Find popular flights from China'
+  popular: 'Find popular flights from China',
 }
 
 const countries = ['Europe', 'Asia', 'Africa', 'North America', 'South America', 'Oceania']
 
 describe('Test China country botview page', () => {
+  /**
+   * Set up the test environment before each test case.
+   */
+  beforeEach(() => {
+    cy.log('visiting baseUrl')
+    cy.visit('/en/country/china/?botview=1')
+  })
 
   it('Should verify head', () => {
-    cy.log('1. Visit page')
-    cy.visit('/en/country/china/?botview=1')
-
     cy.log('2. Assert title text')
     cy.get('head title').should('have.text', texts.headTitle)
 
@@ -41,7 +52,6 @@ describe('Test China country botview page', () => {
 
   it('Should verify body', () => {
     cy.log('1. Visit page')
-    cy.visit('/en/country/china/?botview=1')
 
     cy.log('2. Verify h1 title')
     cy.get('h1').contains(texts.h1).and('be.visible')
@@ -79,22 +89,19 @@ describe('Test China country botview page', () => {
     cy.get('@sectionAirport').contains(texts.popularAirportIn).should('be.visible')
 
     texts.sections.forEach(section => {
-      cy.contains(section)
-        .should('be.visible')
+      cy.contains(section).should('be.visible')
     })
-  
+
     cy.log('Popular flights + subsections')
     cy.getByTestId('InterlinkingSection')
       .contains('h2', 'Popular flights')
       .should('be.visible')
       .next()
       .within(() => {
-        cy.contains(texts.alternative)
-          .should('be.visible')
-        cy.contains(texts.popular)
-          .should('be.visible')
+        cy.contains(texts.alternative).should('be.visible')
+        cy.contains(texts.popular).should('be.visible')
       })
-    
+
     cy.log('Cheap flights + subsections')
     cy.getByTestId('InterlinkingSection')
       .contains(texts.cheap)
@@ -102,18 +109,37 @@ describe('Test China country botview page', () => {
       .next()
       .within(() => {
         countries.forEach(country => {
-          cy.contains(country)
-            .should('be.visible')
+          cy.contains(country).should('be.visible')
         })
       })
-  
+
     cy.log('Search flights, trains & buses')
-    cy.getByTestId('ExploreWrapper')
-      .contains(texts.bestConnection)
-      .should('be.visible')
+    cy.getByTestId('ExploreWrapper').contains(texts.bestConnection).should('be.visible')
 
     cy.log('Footer')
-    cy.getByTestId('Footer-LinksColumn')
-      .should('be.visible')
+    cy.getByTestId('Footer-LinksColumn').should('be.visible')
+  })
+
+  /**
+   * Test to verify the 'Airlines based in China' list items
+   * - Each item should have a valid link containing '/en/airline/'
+   * - Each link should respond with a 200 status
+   */
+  it('Should have working links', () => {
+    cy.contains('Airlines based in China')
+      .next()
+      .find('li a')
+      .then(airlineLinks => {
+        cy.wrap(airlineLinks).each(airlineLink => {
+          cy.wrap(airlineLink)
+            .invoke('attr', 'href')
+            .then(href => {
+              cy.request(href).then(response => {
+                expect(response.status).to.eq(200)
+                expect(href).to.contain('/en/airline/')
+              })
+            })
+        })
+      })
   })
 })
